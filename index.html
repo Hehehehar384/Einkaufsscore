@@ -1,45 +1,78 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Scoreboard</title>
-  <script src="script.js"></script>
-  <style>
-    table, th, td {
-      border: 1px solid black;
-      border-collapse: collapse;
-      padding: 5px;
-    }
-  </style>
-</head>
-<body>
-  <h1>Scoreboard</h1>
-  <table>
-    <tr>
-      <th>Player</th>
-      <th>Score</th>
-      <th>Add</th>
-    </tr>
-    <tr>
-      <td>Jonas</td>
-      <td id="Jonas-score">0</td>
-      <td><button id="jonas-add">+</button></td>
-    </tr>
-    <tr>
-      <td>Peter</td>
-      <td id="Peter-score">0</td>
-      <td><button id="peter-add">+</button></td>
-    </tr>
-    <tr>
-      <td>Mama</td>
-      <td id="Mama-score">0</td>
-      <td><button id="mama-add">+</button></td>
-    </tr>
-    <tr>
-      <td>Papa</td>
-      <td id="Papa-score">0</td>
-      <td><button id="papa-add">+</button></td>
-    </tr>
-  </table>
-</body>
-</html>
+  <head>
+    <title>Scoreboard</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      /* Add some basic styling to the table */
+      table {
+        font-family: Arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 400px;
+        margin: auto;
+      }
 
+      th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+        background-color: #f2f2f2;
+      }
+
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Scoreboard</h1>
+    <table>
+      <tr>
+        <th>Player</th>
+        <th>Score</th>
+      </tr>
+      <tr>
+        <td>Jonas</td>
+        <td id="player1Score">0</td>
+        <td><button onclick="updateScore('player1')">+</button></td>
+      </tr>
+      <tr>
+        <td>Peter</td>
+        <td id="player2Score">0</td>
+        <td><button onclick="updateScore('player2')">+</button></td>
+      </tr>
+      <tr>
+        <td>Mama</td>
+        <td id="player3Score">0</td>
+        <td><button onclick="updateScore('player3')">+</button></td>
+      </tr>
+      <tr>
+        <td>Papa</td>
+        <td id="player4Score">0</td>
+        <td><button onclick="updateScore('player4')">+</button></td>
+      </tr>
+    </table>
+
+    <script>
+      // Initialize the scores object
+      var scores = {
+        player1: 0,
+        player2: 0,
+        player3: 0,
+        player4: 0
+      };
+
+      function updateScore(player) {
+        // Increase the score for the specified player
+        scores[player]++;
+
+        // Update the score in the HTML table
+        document.getElementById(player + "Score").innerHTML = scores[player];
+      }
+    </script>
+  </body>
+</html>
