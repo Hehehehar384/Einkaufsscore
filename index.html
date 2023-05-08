@@ -1,78 +1,113 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Scoreboard</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      /* Add some basic styling to the table */
-      table {
-        font-family: Arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-        max-width: 400px;
-        margin: auto;
-      }
+<head>
+	<title>Scoreboard</title>
+	<style>
+		table {
+			border-collapse: collapse;
+			margin: 20px;
+		}
+		td, th {
+			border: 1px solid black;
+			padding: 10px;
+		}
+		th {
+			background-color: lightblue;
+		}
+		.player-name {
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<h1>Scoreboard</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Player</th>
+				<th>Score</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="player-name">Jonas</td>
+				<td id="score-jonas">0</td>
+				<td>
+					<button onclick="incrementScore('jonas')">+</button>
+					<button onclick="decrementScore('jonas')">-</button>
+				</td>
+			</tr>
+			<tr>
+				<td class="player-name">Peter</td>
+				<td id="score-peter">0</td>
+				<td>
+					<button onclick="incrementScore('peter')">+</button>
+					<button onclick="decrementScore('peter')">-</button>
+				</td>
+			</tr>
+			<tr>
+				<td class="player-name">Mama</td>
+				<td id="score-mama">0</td>
+				<td>
+					<button onclick="incrementScore('mama')">+</button>
+					<button onclick="decrementScore('mama')">-</button>
+				</td>
+			</tr>
+			<tr>
+				<td class="player-name">Papa</td>
+				<td id="score-papa">0</td>
+				<td>
+					<button onclick="incrementScore('papa')">+</button>
+					<button onclick="decrementScore('papa')">-</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 
-      th {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-        background-color: #f2f2f2;
-      }
+	<script>
+		function incrementScore(playerName) {
+			var scoreElement = document.getElementById('score-' + playerName);
+			var currentScore = parseInt(scoreElement.innerText);
+			scoreElement.innerText = currentScore + 1;
+			sortTable();
+		}
 
-      td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Scoreboard</h1>
-    <table>
-      <tr>
-        <th>Player</th>
-        <th>Score</th>
-      </tr>
-      <tr>
-        <td>Jonas</td>
-        <td id="player1Score">0</td>
-        <td><button onclick="updateScore('player1')">+</button></td>
-      </tr>
-      <tr>
-        <td>Peter</td>
-        <td id="player2Score">0</td>
-        <td><button onclick="updateScore('player2')">+</button></td>
-      </tr>
-      <tr>
-        <td>Mama</td>
-        <td id="player3Score">0</td>
-        <td><button onclick="updateScore('player3')">+</button></td>
-      </tr>
-      <tr>
-        <td>Papa</td>
-        <td id="player4Score">0</td>
-        <td><button onclick="updateScore('player4')">+</button></td>
-      </tr>
-    </table>
+		function decrementScore(playerName) {
+			var scoreElement = document.getElementById('score-' + playerName);
+			var currentScore = parseInt(scoreElement.innerText);
+			scoreElement.innerText = currentScore - 1;
+			sortTable();
+		}
 
-    <script>
-      // Initialize the scores object
-      var scores = {
-        player1: 0,
-        player2: 0,
-        player3: 0,
-        player4: 0
-      };
+		function sortTable() {
+			var table = document.querySelector('table');
+			var tbody = table.querySelector('tbody');
+			var rows = tbody.querySelectorAll('tr');
 
-      function updateScore(player) {
-        // Increase the score for the specified player
-        scores[player]++;
+			rows = Array.from(rows);
 
-        // Update the score in the HTML table
-        document.getElementById(player + "Score").innerHTML = scores[player];
-      }
-    </script>
-  </body>
+			rows.sort(function(row1, row2) {
+				var score1 = parseInt(row1.querySelector('td:last-child').innerText);
+				var score2 = parseInt(row2.querySelector('td:last-child').innerText);
+
+				if (score1 < score2) {
+					return 1;
+				} else if (score1 > score2) {
+					return -1;
+				} else {
+					return 0;
+				}
+			});
+
+			rows.forEach(function(row) {
+				tbody.removeChild(row);
+			});
+
+			rows.forEach(function(row) {
+				tbody.appendChild(row);
+			});
+		}
+	</script>
+</body>
 </html>
