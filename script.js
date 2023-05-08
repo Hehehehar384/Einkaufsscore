@@ -1,52 +1,65 @@
-let scores = { "Jonas": 0, "Peter": 0, "Mama": 0, "Papa": 0 };
+// Initialize the scores
+let scores = [0, 0, 0, 0];
 
-// Load the scores from local storage if they exist
-if (localStorage.getItem("scores")) {
-  scores = JSON.parse(localStorage.getItem("scores"));
-  updateScoreboard();
+// Update the scores in the HTML table
+function updateScores() {
+    for (let i = 1; i <= 4; i++) {
+        document.getElementById("score" + i).innerHTML = scores[i - 1];
+    }
 }
 
-// Update the score of a player
-function updateScore(player, amount) {
-  scores[player] += amount;
-  updateScoreboard();
-  saveScores();
+// Add a point to the score of the given player
+function addScore(player) {
+    scores[player - 1]++;
+    updateScores();
 }
 
-// Update the scoreboard with the current scores
-function updateScoreboard() {
-  let scoreboard = document.getElementById("scoreboard");
-  let rows = scoreboard.getElementsByTagName("tr");
-
-  for (let i = 0; i < rows.length; i++) {
-    let player = rows[i].getElementsByTagName("td")[0].textContent;
-    let score = scores[player];
-    rows[i].getElementsByTagName("td")[1].textContent = score;
-  }
+// Subtract a point from the score of the given player
+function subScore(player) {
+    scores[player - 1]--;
+    updateScores();
 }
 
-// Save the scores to local storage
+// Send the scores to the server to be saved
 function saveScores() {
-  localStorage.setItem("scores", JSON.stringify(scores));
+    fetch('/saveScores', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ scores })
+    })
+    .then(response => {
+        console.log(response);
+    })
+    .catch(error => {
+        console.error(error);
+    });
 }
 
-// Add event listeners to the buttons
-let buttons = document.getElementsByTagName("button");
-for (let i = 0; i < buttons.length; i++) {
-  buttons[i].addEventListener("click", function() {
-    let player = this.parentNode.getElementsByTagName("td")[0].textContent;
-    let amount = parseInt(this.getAttribute("data-value"));
-    updateScore(player, amount);
-  });
+// Load the saved scores from the server
+function loadScores() {
+    fetch('/loadScores')
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        scores = data.scores;
+        updateScores();
+    })
+    .catch(error => {
+        console.error(error);
+    });
 }
 
-// Add event listeners to the minus buttons
-let minusButtons = document.getElementsByClassName("minus");
-for (let i = 0; i < minusButtons.length; i++) {
-  minusButtons[i].addEventListener("click", function() {
-    let player = this.parentNode.getElementsByTagName("td")[0].textContent;
-    let amount = parseInt(this.getAttribute("data-value"));
-    updateScore(player, amount);
-  });
+// Load the saved scores when the page is loaded
+window.onload = function() {
+    loadScores();
 }
+
+// Save the scores when the page is unloaded
+window.onbeforeunload = function() {
+    saveScores();
+}
+
 
