@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Scoreboard</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <table>
-      <tr>
-        <th>Player</th>
-        <th>Score</th>
-        <th><button id="save-btn">Save</button></th>
-      </tr>
-      <tr>
-        <td>Jonas</td>
-        <td><button class="plus-btn" id="jonas-plus-btn">+</button> <span id="jonas-score">0</span> <button class="minus-btn" id="jonas-minus-btn">-</button></td>
-      </tr>
-      <tr>
-        <td>Peter</td>
-        <td><button class="plus-btn" id="peter-plus-btn">+</button> <span id="peter-score">0</span> <button class="minus-btn" id="peter-minus-btn">-</button></td>
-      </tr>
-      <tr>
-        <td>Mama</td>
-        <td><button class="plus-btn" id="mama-plus-btn">+</button> <span id="mama-score">0</span> <button class="minus-btn" id="mama-minus-btn">-</button></td>
-      </tr>
-      <tr>
-        <td>Papa</td>
-        <td><button class="plus-btn" id="papa-plus-btn">+</button> <span id="papa-score">0</span> <button class="minus-btn" id="papa-minus-btn">-</button></td>
-      </tr>
-    </table>
-  </body>
+<head>
+  <title>Scoreboard</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+  <h1>Scoreboard</h1>
+  <table id="scoreboard">
+    <tr>
+      <th>Rank</th>
+      <th>Player</th>
+      <th>Score</th>
+      <th>+</th>
+      <th>-</th>
+    </tr>
+    <tr>
+      <td id="rank1"></td>
+      <td>Jonas</td>
+      <td id="score1"></td>
+      <td><button onclick="addScore(1)">+</button></td>
+      <td><button onclick="reduceScore(1)">-</button></td>
+    </tr>
+    <tr>
+      <td id="rank2"></td>
+      <td>Peter</td>
+      <td id="score2"></td>
+      <td><button onclick="addScore(2)">+</button></td>
+      <td><button onclick="reduceScore(2)">-</button></td>
+    </tr>
+    <tr>
+      <td id="rank3"></td>
+      <td>mama</td>
+      <td id="score3"></td>
+      <td><button onclick="addScore(3)">+</button></td>
+      <td><button onclick="reduceScore(3)">-</button></td>
+    </tr>
+    <tr>
+      <td id="rank4"></td>
+      <td>papa</td>
+      <td id="score4"></td>
+      <td><button onclick="addScore(4)">+</button></td>
+      <td><button onclick="reduceScore(4)">-</button></td>
+    </tr>
+  </table>
+  <button onclick="saveScore()">Save Score</button>
+</body>
 </html>
