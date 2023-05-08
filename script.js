@@ -1,30 +1,22 @@
-// Initialize scores
-let scores = {
-  Jonas: 0,
-  Peter: 0,
-  Mama: 0,
-  Papa: 0,
-};
-
-// Update the score of a player
-function updateScore(playerName, score) {
-  scores[playerName] += score;
-  document.getElementById(`${playerName}-score`).innerHTML = scores[playerName];
-}
+// Get the buttons
+var jonasButton = document.getElementById("jonas-add");
+var peterButton = document.getElementById("peter-add");
+var mamaButton = document.getElementById("mama-add");
+var papaButton = document.getElementById("papa-add");
 
 // Add click event listeners to the buttons
-document.getElementById("jonas-add").addEventListener("click", function() {
-  updateScore("Jonas", 1);
-});
+jonasButton.onclick = function() {
+  updateScore("Jonas-score");
+}
 
-document.getElementById("peter-add").addEventListener("click", function() {
-  updateScore("Peter", 1);
-});
+peterButton.onclick = function() {
+  updateScore("Peter-score");
+}
 
-document.getElementById("mama-add").addEventListener("click", function() {
-  updateScore("Mama", 1);
-});
+mamaButton.onclick = function() {
+  updateScore("Mama-score");
+}
 
-document.getElementById("papa-add").addEventListener("click", function() {
-  updateScore("Papa", 1);
-});
+papaButton.onclick = function() {
+  updateScore("Papa-score");
+}
