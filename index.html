@@ -1,44 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<html>
+  <head>
     <title>Scoreboard</title>
-</head>
-<body>
-    <h1>Scoreboard</h1>
-    <table>
-        <tr>
-            <th>Player</th>
-            <th>Score</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tr>
-            <td id="player1">Jonas</td>
-            <td id="score1">0</td>
-            <td><button onclick="addScore(1)">+</button></td>
-            <td><button onclick="subScore(1)">-</button></td>
-        </tr>
-        <tr>
-            <td id="player2">Peter</td>
-            <td id="score2">0</td>
-            <td><button onclick="addScore(2)">+</button></td>
-            <td><button onclick="subScore(2)">-</button></td>
-        </tr>
-        <tr>
-            <td id="player3">mama</td>
-            <td id="score3">0</td>
-            <td><button onclick="addScore(3)">+</button></td>
-            <td><button onclick="subScore(3)">-</button></td>
-        </tr>
-        <tr>
-            <td id="player4">papa</td>
-            <td id="score4">0</td>
-            <td><button onclick="addScore(4)">+</button></td>
-            <td><button onclick="subScore(4)">-</button></td>
-        </tr>
-    </table>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
-</body>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Player</th>
+        <th>Score</th>
+        <th><button id="save-btn">Save</button></th>
+      </tr>
+      <tr>
+        <td>Jonas</td>
+        <td><button class="plus-btn" id="jonas-plus-btn">+</button> <span id="jonas-score">0</span> <button class="minus-btn" id="jonas-minus-btn">-</button></td>
+      </tr>
+      <tr>
+        <td>Peter</td>
+        <td><button class="plus-btn" id="peter-plus-btn">+</button> <span id="peter-score">0</span> <button class="minus-btn" id="peter-minus-btn">-</button></td>
+      </tr>
+      <tr>
+        <td>Mama</td>
+        <td><button class="plus-btn" id="mama-plus-btn">+</button> <span id="mama-score">0</span> <button class="minus-btn" id="mama-minus-btn">-</button></td>
+      </tr>
+      <tr>
+        <td>Papa</td>
+        <td><button class="plus-btn" id="papa-plus-btn">+</button> <span id="papa-score">0</span> <button class="minus-btn" id="papa-minus-btn">-</button></td>
+      </tr>
+    </table>
+  </body>
 </html>
-
