@@ -1,6 +1,9 @@
 {
-  "Jonas": 10,
-  "Peter": 5,
-  "Mama": 8,
-  "Papa": 12
+  "scores": {
+    "Jonas": 0,
+    "Peter": 0,
+    "Mama": 0,
+    "Papa": 0
+  }
 }
+
