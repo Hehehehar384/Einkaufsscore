@@ -7,7 +7,7 @@
 </head>
 <body>
   <h1>Scoreboard</h1>
-  <table id="scoreboard">
+  <table>
     <tr>
       <th>Rank</th>
       <th>Player</th>
@@ -16,34 +16,36 @@
       <th>-</th>
     </tr>
     <tr>
-      <td id="rank1"></td>
+      <td>1</td>
       <td>Jonas</td>
-      <td id="score1"></td>
-      <td><button onclick="addScore(1)">+</button></td>
-      <td><button onclick="reduceScore(1)">-</button></td>
+      <td id="jonas-score">0</td>
+      <td><button id="jonas-plus">+</button></td>
+      <td><button id="jonas-minus">-</button></td>
     </tr>
     <tr>
-      <td id="rank2"></td>
+      <td>2</td>
       <td>Peter</td>
-      <td id="score2"></td>
-      <td><button onclick="addScore(2)">+</button></td>
-      <td><button onclick="reduceScore(2)">-</button></td>
+      <td id="peter-score">0</td>
+      <td><button id="peter-plus">+</button></td>
+      <td><button id="peter-minus">-</button></td>
     </tr>
     <tr>
-      <td id="rank3"></td>
+      <td>3</td>
       <td>mama</td>
-      <td id="score3"></td>
-      <td><button onclick="addScore(3)">+</button></td>
-      <td><button onclick="reduceScore(3)">-</button></td>
+      <td id="mama-score">0</td>
+      <td><button id="mama-plus">+</button></td>
+      <td><button id="mama-minus">-</button></td>
     </tr>
     <tr>
-      <td id="rank4"></td>
+      <td>4</td>
       <td>papa</td>
-      <td id="score4"></td>
-      <td><button onclick="addScore(4)">+</button></td>
-      <td><button onclick="reduceScore(4)">-</button></td>
+      <td id="papa-score">0</td>
+      <td><button id="papa-plus">+</button></td>
+      <td><button id="papa-minus">-</button></td>
     </tr>
   </table>
-  <button onclick="saveScore()">Save Score</button>
+  <button id="save-button">Save Score</button>
+  <p>Current score: <span id="current-score">0</span></p>
 </body>
 </html>
+
