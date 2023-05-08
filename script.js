@@ -1,3 +1,10 @@
+// Define the updateScore function
+function updateScore(scoreId) {
+  var scoreElement = document.getElementById(scoreId);
+  var currentScore = parseInt(scoreElement.innerHTML);
+  scoreElement.innerHTML = currentScore + 1;
+}
+
 // Get the buttons
 var jonasButton = document.getElementById("jonas-add");
 var peterButton = document.getElementById("peter-add");
