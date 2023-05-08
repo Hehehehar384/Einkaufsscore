@@ -21,7 +21,7 @@ function saveScores() {
 
 function updateScore(player, amount) {
   scores[player] += amount;
-  const scoreEl = document.getElementById(player);
+  const scoreEl = document.getElementById(`${player}-score`);
   scoreEl.textContent = scores[player];
 }
 
@@ -76,3 +76,4 @@ window.onload = function () {
     saveScores();
   });
 };
+
